@@ -2,9 +2,32 @@ package ch16;
 
 public class Intersection {
 	
-	public static boolean isIntersecting(Point start1, Point end1, Point start2, Point end2) {
-		boolean res = true;
+	public static Point isIntersecting(Point start1, Point end1, Point start2, Point end2) {
+		Point res = null;
+		if(start1.x > end1.x) swap(start1, end1);
+		if(start2.x > end2.x) swap(start2, end2);
+		if(start1.x > start2.x) {
+			swap(start1, start2);
+			swap(end1, end2);
+		}
+		
+		Line line1 = new Line(start1, end1);
+		Line line2 = new Line(start2, end2);
+		
+		double x = (line2.yInt - line1.yInt) / (line1.slope - line2.slope); 
+		double y = line1.slope * x + line1.yInt;
+		
+		Point intersection = new Point (x, y);
+		
+		if(inBounds(line1, line2, intersection)) {
+			res = intersection;
+		}
+		
 		return res;
+	}
+	
+	public static boolean inBounds(Line lin1, Line line2, Point intersection) {
+		return true;
 	}
 	
 	public static void swap(Point p1, Point p2) {
@@ -17,6 +40,21 @@ public class Intersection {
 	}
 
 }
+
+class Line {
+	double slope;
+	double yInt;
+	
+	public Line(Point start, Point end) {
+		double xDelta = end.x - start.x;
+		double yDelta = end.y - start.y;
+		this.slope = yDelta / xDelta;
+		this.yInt = end.y - slope * end.x;
+	}
+}
+
+
+
 
 class Point{
 	double x;
