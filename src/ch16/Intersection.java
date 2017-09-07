@@ -19,15 +19,24 @@ public class Intersection {
 		
 		Point intersection = new Point (x, y);
 		
-		if(inBounds(line1, line2, intersection)) {
+		if(inBounds(start1, end1, intersection) && inBounds(start2, end2, intersection)) {
 			res = intersection;
 		}
 		
 		return res;
 	}
 	
-	public static boolean inBounds(Line lin1, Line line2, Point intersection) {
-		return true;
+	public static boolean inBounds(Point start, Point end, Point intersection) {
+		return inBounds(start.x, end.x, intersection.x) &&
+				inBounds(start.y, end.y, intersection.y);
+	}
+	
+	public static boolean inBounds(double start, double end, double intersection) {
+		if(start > end) {
+			return start >= intersection && end <= intersection;
+		}else {
+			return start <= intersection && end >= intersection;
+		}
 	}
 	
 	public static void swap(Point p1, Point p2) {
