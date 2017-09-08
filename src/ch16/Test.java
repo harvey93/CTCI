@@ -4,7 +4,7 @@ import java.util.*;
 public class Test {
 
 	public static void main(String[] args) {
-		System.out.println(Operations.div(15, 3));
+		System.out.println(DivingBoard.allLengths(15, 1, 3));
 	}
 }
 
