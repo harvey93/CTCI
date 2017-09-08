@@ -13,6 +13,20 @@ public class Operations {
 		return a + multiply(a, b - 1);
 	}
 	
+	public static int negate(int a) {
+		int neg = 0;
+		int newSign = a < 0 ? -1 : 1;
+		while(a != 0) {
+			neg += newSign;
+			a += newSign;
+		}
+		return neg;
+	}
+	
+	public static int sub(int a, int b) {
+		return a + negate(b);
+	}
+	
 	public static int multOpt(int a, int b) {
 		if(b == 0) {
 			return 0;
