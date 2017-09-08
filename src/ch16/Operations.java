@@ -27,6 +27,15 @@ public class Operations {
 		return a + negate(b);
 	}
 	
+	public static int div(int a, int b) {
+		int count = 0;
+		while(a > 0) {
+			count++;
+			a = sub(a, b);
+		}
+		return count;
+	}
+	
 	public static int multOpt(int a, int b) {
 		if(b == 0) {
 			return 0;
