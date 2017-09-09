@@ -25,4 +25,14 @@ public class DivingBoard {
 		allLengths(k - 1, total + longer, shorter, longer, result, visited);
 		visited.add(key);
 	}
+	
+	public static HashSet<Integer> allLengthsOptimal(int k, int shorter, int longer){
+		HashSet<Integer> result = new HashSet<>();
+		for(int nShorter = 0; nShorter <= k; nShorter++) {
+			int nLonger = k - nShorter;
+			int len = shorter * nShorter + longer * nLonger;
+			result.add(len);
+		}
+		return result;
+	}
 }
