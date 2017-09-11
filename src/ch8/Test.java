@@ -43,7 +43,7 @@ public class Test {
 
 
 	public static void main(String[] args) {
-		System.out.println(BooleanEvaluation.countEval("1^0|0|1", false));
+		System.out.println(Coins.makeChange(10));
 	}
 }
 

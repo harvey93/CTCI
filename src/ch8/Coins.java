@@ -5,39 +5,28 @@ public class Coins {
 	
 	public static long makeChange(int amount){
 		int [] coins = {25, 10, 5, 1};
-		HashMap<String, Integer> memo = new HashMap<>();
-		return makeChange(coins, amount, 0, memo);
+		return makeChange(coins, amount, 0);
 	}
 	
-	public static long makeChange(int[] coins, int amount, int index, HashMap<String, Integer> memo){
-		if(amount == 0){
+	public static long makeChange(int [] coins, int amount, int index) {
+		if(amount == 0) {
 			return 1;
 		}
 		
-		
-		if(index >= coins.length){
+		if(index >= coins.length) {
 			return 0;
 		}
 		
-		String key = amount + "-" + index;
-		
-		if(memo.containsKey(key)){
-			return memo.get(key);
-		}
-		
+		int amountFromCoin = 0;
 		int ways = 0;
-		int amountFromCoins = 0;
 		
-		while(amountFromCoins <= amount){
-			int remainder = amount - amountFromCoins;
-			ways += makeChange(coins, remainder, index + 1, memo);
-			amountFromCoins += coins[index];
+		while(amountFromCoin <= amount) {
+			ways += makeChange(coins, amount - amountFromCoin, index + 1);
+			amountFromCoin += coins[index];
 		}
 		
-		memo.put(key, ways);
 		return ways;
 	}
-	
 	
 	
 	
