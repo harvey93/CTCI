@@ -43,7 +43,7 @@ public class Test {
 
 
 	public static void main(String[] args) {
-		System.out.println(Coins.makeChange(10));
+		System.out.println(Staircase.tripleStep(4));
 	}
 }
 
