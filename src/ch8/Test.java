@@ -43,7 +43,8 @@ public class Test {
 
 
 	public static void main(String[] args) {
-		System.out.println(MatrixProbs.PathsMemo(matrix));
+		System.out.println(MatrixProbs.pathsMemo(matrix));
+		System.out.println(MatrixProbs.pathsDP(matrix));
 	}
 }
 
