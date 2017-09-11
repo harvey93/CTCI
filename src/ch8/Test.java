@@ -43,8 +43,7 @@ public class Test {
 
 
 	public static void main(String[] args) {
-		System.out.println(Staircase.tripleStep(10));
-		System.out.println(Staircase.tripleStepDP(10));
+		System.out.println(MatrixProbs.PathsMemo(matrix));
 	}
 }
 
