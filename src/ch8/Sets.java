@@ -184,37 +184,84 @@ public class Sets {
 	}
 	
 	
+	
 	public static ArrayList<ArrayList<Integer>> subSets(ArrayList<Integer> list){
-		if(list.size() == 0){
-			ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-			res.add(new ArrayList<Integer>());
+		if(list.size() == 0) {
+			ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+			res.add(new ArrayList<>());
 			return res;
 		}
 		
 		Integer last = list.remove(list.size() - 1);
 		
-		
-		ArrayList<ArrayList<Integer>> prevList = subSets(list);
+		ArrayList<ArrayList<Integer>> prev = subSets(list);
 		ArrayList<ArrayList<Integer>> newSubs = new ArrayList<>();
 		
-		for(ArrayList<Integer> prevSub : prevList){
-			ArrayList<Integer> sub = new ArrayList<>();
-			for(Integer s : prevSub){
-				sub.add(s);
-			}
-			newSubs.add(sub);
+		for(ArrayList<Integer> a : prev) {
+			ArrayList<Integer> arr = (ArrayList<Integer>) a.clone();
+			arr.add(last);
+			newSubs.add(arr);
 		}
-		
-		
-		for(ArrayList<Integer> sub : newSubs){
-			sub.add(last);
-		}
-		for(ArrayList<Integer> newSub : newSubs){
-			prevList.add(newSub);
-		}
-		
-		
-		return prevList;
+		prev.addAll(newSubs);
+		return prev;
 	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public static ArrayList<ArrayList<Integer>> subSets(ArrayList<Integer> list){
+//		if(list.size() == 0){
+//			ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+//			res.add(new ArrayList<Integer>());
+//			return res;
+//		}
+//		
+//		Integer last = list.remove(list.size() - 1);
+//		
+//		
+//		ArrayList<ArrayList<Integer>> prevList = subSets(list);
+//		ArrayList<ArrayList<Integer>> newSubs = new ArrayList<>();
+//		
+//		for(ArrayList<Integer> prevSub : prevList){
+//			ArrayList<Integer> sub = new ArrayList<>();
+//			for(Integer s : prevSub){
+//				sub.add(s);
+//			}
+//			newSubs.add(sub);
+//		}
+//		
+//		
+//		for(ArrayList<Integer> sub : newSubs){
+//			sub.add(last);
+//		}
+//		for(ArrayList<Integer> newSub : newSubs){
+//			prevList.add(newSub);
+//		}
+//		
+//		
+//		return prevList;
+//	}
 
 }

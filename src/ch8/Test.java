@@ -43,8 +43,9 @@ public class Test {
 
 
 	public static void main(String[] args) {
-		System.out.println(MatrixProbs.pathsMemo(matrix));
-		System.out.println(MatrixProbs.pathsDP(matrix));
+		Integer[] arr = {1,2,3};
+		ArrayList<Integer> list = new ArrayList<>(Arrays.asList(arr));
+		System.out.println(Sets.subSets(list));
 	}
 }
 
