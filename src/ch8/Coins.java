@@ -4,11 +4,12 @@ import java.util.*;
 public class Coins {
 	
 	public static long makeChange(int amount){
+		HashMap<String, Integer> memo = new HashMap<>();
 		int [] coins = {25, 10, 5, 1};
-		return makeChange(coins, amount, 0);
+		return makeChange(coins, amount, 0, memo);
 	}
 	
-	public static long makeChange(int [] coins, int amount, int index) {
+	public static long makeChange(int [] coins, int amount, int index, HashMap<String, Integer> memo) {
 		if(amount == 0) {
 			return 1;
 		}
@@ -17,14 +18,20 @@ public class Coins {
 			return 0;
 		}
 		
+		String key = amount + "-" + index;
+		if(memo.containsKey(key)) {
+			return memo.get(key); 
+		}
+		
 		int amountFromCoin = 0;
 		int ways = 0;
 		
 		while(amountFromCoin <= amount) {
-			ways += makeChange(coins, amount - amountFromCoin, index + 1);
+			ways += makeChange(coins, amount - amountFromCoin, index + 1, memo);
 			amountFromCoin += coins[index];
 		}
 		
+		memo.put(key, ways);
 		return ways;
 	}
 	
