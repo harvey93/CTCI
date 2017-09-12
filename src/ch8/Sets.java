@@ -2,30 +2,82 @@ package ch8;
 import java.util.*;
 
 public class Sets {
-	
+
 	public static ArrayList<String> printPerms(String s){
+		HashMap<Character, Integer> table = buildFreqTable(s);
 		ArrayList<String> result = new ArrayList<>();
-		HashMap<Character, Integer> map = buildFreqTable(s);
-		
-		printPerms(map, "", result, s.length());
+		printPerms(result, "", table, s.length());
 		return result;
 	}
 	
-	public static void printPerms(HashMap<Character, Integer> map, String prefix, ArrayList<String> result, int remainder){
-		if(remainder == 0){
+	public static void printPerms(ArrayList<String> result, String prefix, HashMap<Character, Integer> table, int rem) {
+		if(rem == 0) {
 			result.add(prefix);
 			return;
 		}
 		
-		for(Character c : map.keySet()){
-			int count = map.get(c);
-			if(count > 0){
-				map.put(c, count - 1);
-				printPerms(map, prefix + c, result, remainder - 1);
-				map.put(c, count);
+		for(Character c : table.keySet()) {
+			int count = table.get(c);
+			if(count > 0) {
+				table.put(c, count - 1);
+				printPerms(result, prefix + c, table, rem - 1);
+				table.put(c, count);
 			}
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public static ArrayList<String> printPerms(String s){
+//		ArrayList<String> result = new ArrayList<>();
+//		HashMap<Character, Integer> map = buildFreqTable(s);
+//		
+//		printPerms(map, "", result, s.length());
+//		return result;
+//	}
+//	
+//	public static void printPerms(HashMap<Character, Integer> map, String prefix, ArrayList<String> result, int remainder){
+//		if(remainder == 0){
+//			result.add(prefix);
+//			return;
+//		}
+//		
+//		for(Character c : map.keySet()){
+//			int count = map.get(c);
+//			if(count > 0){
+//				map.put(c, count - 1);
+//				printPerms(map, prefix + c, result, remainder - 1);
+//				map.put(c, count);
+//			}
+//		}
+//	}
 	
 	
 	

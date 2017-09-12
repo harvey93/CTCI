@@ -43,12 +43,7 @@ public class Test {
 
 
 	public static void main(String[] args) {		
-//		System.out.println(Sets.permString("1234"));
-		TowersOfHanoi towers = new TowersOfHanoi(10);
-		towers.solve();
-		System.out.println(towers.t1);
-		System.out.println(towers.t2);
-		System.out.println(towers.t3);
+		System.out.println(Sets.printPerms("hell"));
 	}
 }
 
