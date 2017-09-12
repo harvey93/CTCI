@@ -5,40 +5,45 @@ import java.util.*;
 
 public class Boxes {
 	
-	public static int createStack(ArrayList<Box> boxes){
-		HashMap<Integer, Integer> memo = new HashMap<>();
+
+	public static int createStack(ArrayList<Box> boxes) {
+		
 		Collections.sort(boxes, new BoxComparator());
 		int maxHeight = 0;
-		for(int i = 0; i < boxes.size(); i++){
-			int height = createStack(boxes, i, memo);
-			maxHeight = Math.max(maxHeight, height);
+		for(int i = 0; i < boxes.size(); i++) {
+			int height = createStack(boxes, i);
+			if(height > maxHeight) {
+				maxHeight = height;
+			}
 		}
-				
+		
 		return maxHeight;
 	}
 	
-	
-	public static int createStack(ArrayList<Box> boxes, int index, HashMap<Integer, Integer> memo){
-		if(memo.containsKey(index)){
-			return memo.get(index);
-		}
-		
+	public static int createStack(ArrayList<Box> boxes, int index) {
 		Box bottom = boxes.get(index);
 		
 		int maxHeight = 0;
 		
-		for(int i = index + 1; i < boxes.size(); i++){
-			Box current = boxes.get(i);
-			if(current.canBeAbove(bottom)){
-				int height = createStack(boxes, i, memo);
-				maxHeight = Math.max(maxHeight, height);
+		for(int j = index + 1; j < boxes.size(); j++) {
+			Box current = boxes.get(j);
+			if(current.canBeAbove(bottom)) {
+				int height = createStack(boxes, j);
+				maxHeight = Math.max(height, maxHeight);
 			}
 		}
 		
 		maxHeight += bottom.h;
-		memo.put(index, maxHeight);
 		return maxHeight;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
