@@ -42,10 +42,8 @@ public class Test {
 // countEval("1^0|0|1", false)
 
 
-	public static void main(String[] args) {
-		Integer[] arr = {1,2,3};
-		ArrayList<Integer> list = new ArrayList<>(Arrays.asList(arr));
-		System.out.println(Sets.subSets(list));
+	public static void main(String[] args) {		
+		System.out.println(Sets.permString("1234"));
 	}
 }
 

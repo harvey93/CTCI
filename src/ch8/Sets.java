@@ -129,26 +129,71 @@ public class Sets {
 			
 
 	
-	public static HashSet<String> permString(String s){
-		HashSet<String> set = new HashSet<>();
-		if(s.length() <= 1){
+	public static HashSet<String> permString(String s) {
+		HashSet<String> set = new HashSet<String>();
+
+		if(s.length() == 1) {
 			set.add(s);
 			return set;
 		}
-		String last = new Character(s.charAt(s.length() - 1)).toString();
-		HashSet<String> prevPerms = permString(s.substring(0,  s.length() - 1));
 		
-		for(String sub : prevPerms){
-			for(int i = 0; i <= sub.length(); i++){
-				StringBuilder newSub = new StringBuilder(sub);
-				newSub.insert(i, last);
+		char last = s.charAt(s.length() - 1);
+		HashSet<String> prev = permString(s.substring(0, s.length() - 1));
+		
+		
+		
+		for(String sub : prev) {
+			StringBuilder newSub = new StringBuilder(sub);
+
+			for(int j = 0; j <= newSub.length(); j++) {
+				newSub.insert(j, last);
 				set.add(newSub.toString());
+				newSub.deleteCharAt(j);
 			}
 		}
 		
 		return set;
-		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	public static HashSet<String> permString(String s){
+//		HashSet<String> set = new HashSet<>();
+//		if(s.length() <= 1){
+//			set.add(s);
+//			return set;
+//		}
+//		String last = new Character(s.charAt(s.length() - 1)).toString();
+//		HashSet<String> prevPerms = permString(s.substring(0,  s.length() - 1));
+//		
+//		for(String sub : prevPerms){
+//			for(int i = 0; i <= sub.length(); i++){
+//				StringBuilder newSub = new StringBuilder(sub);
+//				newSub.insert(i, last);
+//				set.add(newSub.toString());
+//			}
+//		}
+//		
+//		return set;
+//		
+//	}
 
 	
 	
