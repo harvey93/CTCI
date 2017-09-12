@@ -4,7 +4,8 @@ import java.util.*;
 public class Test {
 
 	public static void main(String[] args) {
-		System.out.println(PatternMatch.isMatch("catcatgocatgo", "aabab"));
+		
+		System.out.println(PatternMatch.isMatchBF("catcatgocatgo", "aabab"));
 	}
 }
 
