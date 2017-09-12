@@ -7,11 +7,11 @@ public class Boxes {
 	
 
 	public static int createStack(ArrayList<Box> boxes) {
-		
+		HashMap<Integer, Integer> memo = new HashMap<>();
 		Collections.sort(boxes, new BoxComparator());
 		int maxHeight = 0;
 		for(int i = 0; i < boxes.size(); i++) {
-			int height = createStack(boxes, i);
+			int height = createStack(boxes, i, memo);
 			if(height > maxHeight) {
 				maxHeight = height;
 			}
@@ -20,7 +20,10 @@ public class Boxes {
 		return maxHeight;
 	}
 	
-	public static int createStack(ArrayList<Box> boxes, int index) {
+	public static int createStack(ArrayList<Box> boxes, int index, HashMap<Integer, Integer> memo) {
+		if(memo.containsKey(index)) {
+			return memo.get(index);
+		}
 		Box bottom = boxes.get(index);
 		
 		int maxHeight = 0;
@@ -28,12 +31,13 @@ public class Boxes {
 		for(int j = index + 1; j < boxes.size(); j++) {
 			Box current = boxes.get(j);
 			if(current.canBeAbove(bottom)) {
-				int height = createStack(boxes, j);
+				int height = createStack(boxes, j, memo);
 				maxHeight = Math.max(height, maxHeight);
 			}
 		}
 		
 		maxHeight += bottom.h;
+		memo.put(index, maxHeight);
 		return maxHeight;
 	}
 	
