@@ -43,7 +43,7 @@ public class Test {
 
 
 	public static void main(String[] args) {		
-		System.out.println(Sets.printPerms("hell"));
+		System.out.println(Parens.generateParens(3));
 	}
 }
 
