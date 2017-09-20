@@ -10,13 +10,9 @@ public class Parens {
 		return result;
 	}
 	
-	public static void generateParens(ArrayList<String> result, int left, int right, char [] arr, int index) {
+	public static void generateParens(ArrayList<String> result, int left, int right, char [] chars, int index) {
 		if(left == 0 && right == 0) {
-			result.add(String.copyValueOf(arr));
-			return;
-		}
-		
-		if(index == arr.length) {
+			result.add(String.copyValueOf(chars));
 			return;
 		}
 		
@@ -24,12 +20,21 @@ public class Parens {
 			return;
 		}
 		
-		arr[index] = '(';
-		generateParens(result, left - 1, right, arr, index + 1);
+		chars[index] = '(';
 		
-		arr[index] = ')';
-		generateParens(result, left, right - 1, arr, index + 1);
+		generateParens(result, left - 1, right, chars, index + 1);
+		
+		chars[index] = ')';
+		generateParens(result, left, right - 1, chars, index + 1);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
