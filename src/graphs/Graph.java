@@ -2,10 +2,9 @@ package graphs;
 import java.util.*;
 
 public class Graph<T> {
-	HashSet<Node<T>> nodes = new HashSet<>();
+	HashMap<String, Node<T>> nodes = new HashMap<>();
 	
 	public void addNode() {
-		
 	}
 	
 	public String toString() {
