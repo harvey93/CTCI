@@ -1,5 +1,6 @@
 package graphs;
 
-public class Node {
+public class Node<T> {
 
+	T data;
 }
