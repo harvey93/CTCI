@@ -1,7 +1,15 @@
 package graphs;
+import java.util.*;
 
 public class Node<T> {
-
-	T data;
 	
+	String label;
+	T data;
+	HashSet<Edge> inEdges = new HashSet<>();
+	HashSet<Edge> outEdges = new HashSet<>();
+	
+	public Node(String label, T data) {
+		this.label = label;
+		this.data = data;
+	}
 }
