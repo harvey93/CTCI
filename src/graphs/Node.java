@@ -14,6 +14,6 @@ public class Node<T> {
 	}
 	
 	public String toString() {
-		return "Label: " + this.label + "\nData: " + this.data;
+		return "{ Label: " + this.label + ", Data: " + this.data + " }";
 	}
 }
